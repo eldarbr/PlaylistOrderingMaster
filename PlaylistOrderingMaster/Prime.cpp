@@ -19,6 +19,7 @@ int main() {
 	std::cout << std::endl <<
 	Analisys::calculateVariance( pp.getData()[3], pp.getAmmount()-3 ) << std::endl;
 
+	vis::GraphView().outputDataGraph(pp.getData()[0], pp.getAmmount(), 300, 100);
 
 	return 0;
 }

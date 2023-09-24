@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <Windows.h>
 #include "OrderingTools.h"
 
 
@@ -29,6 +30,41 @@ namespace vis {
 
 	//														//
 	//					class TableView						//
+	//					end of declaration					//
+	//														//
+	//////////////////////////////////////////////////////////
+
+
+
+	//////////////////////////////////////////////////////////
+	//														//
+	//					class GraphView						//
+	//					start of declaration				//
+	//														//
+
+
+	class GraphView {
+
+	private:
+		HWND console;
+
+		void getHWND();
+
+	public:
+
+		GraphView();
+		~GraphView();
+
+		void outputDataGraph( const double* data,
+								const int ammount,
+								const int startY,
+								const int maxHeight );
+
+	};
+
+
+	//														//
+	//					class GraphView						//
 	//					end of declaration					//
 	//														//
 	//////////////////////////////////////////////////////////
