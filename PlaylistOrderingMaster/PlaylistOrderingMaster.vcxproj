@@ -127,13 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="IOInterfaces.h" />
     <ClInclude Include="OrderingTools.h" />
     <ClInclude Include="Visualisations.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="IOInterfaces.cpp" />
     <ClCompile Include="OrderingTools.cpp" />
     <ClCompile Include="Prime.cpp" />
     <ClCompile Include="Visualisations.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="inpData.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

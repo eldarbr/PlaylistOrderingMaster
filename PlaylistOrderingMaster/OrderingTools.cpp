@@ -8,13 +8,13 @@
 //					class DataHandler					//
 //					start of definition					//
 //														//
-//														//
 
 
 DataHandler::DataHandler( const double* yValues, const int ammount ) {
 
 
 	if ( ammount < 3 ) {
+
 		throw std::invalid_argument( "ammount is not valid" );
 	}
 
@@ -39,7 +39,7 @@ DataHandler::DataHandler( const double* yValues, const int ammount ) {
 
 DataHandler::~DataHandler() {
 
-    for(int i = 0; i < 4; ++i) {
+    for( int i = 0; i < 3; i++ ) {
 		delete[] data[i];
 	}
 	delete[] data;
@@ -48,29 +48,26 @@ DataHandler::~DataHandler() {
 void DataHandler::calculateDerivatives(const int stage) {
 
 	// calculate the derivative for this stage
-	for ( int i = 0; i < ammount-stage; i++ ) {
+	for ( int i = 0; i < ammount-stage-1; i++ ) {
 
-		this->data[1+stage][i] = this->data[stage][i+1] - this->data[stage][i];
-
+		this->data[stage+1][i] = this->data[stage][i+1] - this->data[stage][i];
 	}
 
-
 	// if there is still stages to calculate
-	if (stage!=2) {
+	if ( stage!=2 ) {
 
 		calculateDerivatives(stage+1);
-
 	}
 	
 }
 
-double** DataHandler::getData() {
+double** DataHandler::getData() const {
 
 	return this->data;
 
 }
 
-int DataHandler::getAmmount() {
+int DataHandler::getAmmount() const {
 
 	return this->ammount;
 
@@ -81,5 +78,52 @@ int DataHandler::getAmmount() {
 //					class DataHandler					//
 //					end of definition					//
 //														//
+//////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////
+//														//
+//					class Analisys						//
+//					start of definition					//
+//														//
+
+
+double Analisys::calculateVariance( const double* data,
+									const int ammount ) {
+
+	double average = calculateAverage( data, ammount );
+
+	double variance = 0;
+
+	for ( int i = 0; i < ammount; i++ ) {
+
+		double diff = data[i] - average;
+		variance += diff*diff;
+	}
+
+	return variance;
+}
+
+double Analisys::calculateAverage( const double* data,
+									const int ammount ) {
+
+	double sum = 0;
+
+	for ( int i = 0; i < ammount; i++ ) {
+
+		sum += data[i];
+	}
+
+	return sum / ammount;
+}
+
+
+//														//
+//					class Analisys						//
+//					end of definition					//
 //														//
 //////////////////////////////////////////////////////////
+
+
+

@@ -21,6 +21,9 @@
     <ClInclude Include="Visualisations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IOInterfaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OrderingTools.cpp">
@@ -32,5 +35,13 @@
     <ClCompile Include="Prime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IOInterfaces.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="inpData.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

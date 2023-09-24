@@ -1,16 +1,24 @@
+#include <iostream>
 #include "OrderingTools.h"
 #include "Visualisations.h"
+#include "IOInterfaces.h"
 
 
 int main() {
+	
+	io::File file = io::File( "inpData.txt" );
+	file.readValues();
 
-	double data[] = { 2.5, 2.75, 3.2, 3.65, 3.9 };
+	double* data = file.getData();
+	int dataLength = file.getDataLength();
 
-	DataHandler* pp = new DataHandler(data, 5);
+	DataHandler pp = DataHandler( data, dataLength );
 
-	vis::TableView::outputDataTable(pp->getData(), pp->getAmmount());
+	vis::TableView::outputDataTable( pp.getData(), pp.getAmmount() );
 
-	delete pp;
+	std::cout << std::endl <<
+	Analisys::calculateVariance( pp.getData()[3], pp.getAmmount()-3 ) << std::endl;
+
 
 	return 0;
 }
